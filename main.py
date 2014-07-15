@@ -1,3 +1,6 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 __author__ = 'bong'
 
 import urllib2
@@ -37,12 +40,12 @@ def ktreviews(id):
 
             for rvn in xrange(0, length, 2):
                 #print reviews[rvn]
-                name = reviews[rvn].find(".//div[@class='name']").text.strip()
-                star = reviews[rvn].find(".//div[@class='name']/img").attrib['title']
-                date = dparser.parse(re.sub("[\(|\)]+","",reviews[rvn].find('.//div[@class="date"]').text.strip()))
+                name = reviews[rvn].find(".//div[@class='name']").text.encode("utf-8").strip()
+                star = reviews[rvn].find(".//div[@class='name']/img").attrib['title'].encode("utf-8")
+                date = dparser.parse(re.sub("[\(|\)]+","",reviews[rvn].find('.//div[@class="date"]').text.encode("utf-8").strip()))
                 #favor = reviews[rvn].find(".//a")
                 #print etree.tostring(favor,encoding="UTF-8",method="html");
-                contents = reviews[rvn +1].find(".//span").text.strip()
+                contents = reviews[rvn +1].find(".//span").text.encode("utf-8").strip()
 
                 print "name : %s, star: %s, date: %s, favor: %s, contents : %s" % (name, star, date, None, contents)
 
