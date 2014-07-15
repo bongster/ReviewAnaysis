@@ -33,10 +33,10 @@ def ktreviews(id):
 	review = result.findall(".//div[@class='tab_use']//li")
 
 	page = result.findall(".//div[@class='tab_use']//div[@class='cocmBrdPaging']//span[@class='whole']")
-	print len(review)
+#	print len(review)
 	tn = int(re.findall('[0-9]+',page[0].text)[0])
 	if tn is not 0 :
-		print "page number is %d"% tn
+#		print "page number is %d"% tn
 		for pn in range(tn, 0, -1) :
 			url = "http://market.olleh.com//appDetail?ptype=C&category=&pid=51200015902624&page="+ str(pn) +"&tab=3&sel_order=1"
 			resp = urllib2.urlopen(url)
@@ -45,7 +45,7 @@ def ktreviews(id):
 			result = etree.fromstring(dom, parser=parser)
 			reviews = result.findall(".//div[@class='tab_use']//li")
 			length = len(reviews)
-			print "No.%d review result count is %d" % (pn, len(reviews))
+#			print "No.%d review result count is %d" % (pn, len(reviews))
 			for rvn in xrange(0, length, 2):
 				#print reviews[rvn]
 				name = reviews[rvn].find(".//div[@class='name']").text.encode("utf-8").strip()
@@ -55,9 +55,9 @@ def ktreviews(id):
                 #print etree.tostring(favor,encoding="UTF-8",method="html");
 				contents = reviews[rvn +1].find(".//span").text.encode("utf-8").strip()
 				r.append(Review("kt",name,star,contents,date))
-				print "name : %s, star: %s, date: %s, favor: %s, contents : %s" % (name, star, date, None, contents)
+#				print "name : %s, star: %s, date: %s, favor: %s, contents : %s" % (name, star, date, None, contents)
 	else:
-		print "%d is 0" % tn
+#		print "%d is 0" % tn
 	return r
     #print result
 
