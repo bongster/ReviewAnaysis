@@ -3,7 +3,13 @@ Review Anaysis
 
 This is Review Anaysis Project for Apps
 
-include Apps Store
+#### Install
+
+- source install/review/bin/activate
+- pip install -r requirements.txt
+- python main.py
+
+####include Stores
 
 - T Store (implements 60%)
  - Get Reviews Lists (100%)
